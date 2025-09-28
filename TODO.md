@@ -1,5 +1,9 @@
-# TODO for Adding Icons
+# Task: Revert Font Size Changes in Wells Fargo Mobile App
 
-- [x] Edit index.html: Replace the placeholder span in the Savings & CDs option-icon with an img tag sourcing "savings&cds.png" (width: 32px, height: 32px, alt: "Savings & CDs icon").
+## Steps:
 
-- [x] Edit index.html: Replace the house.png in the Loans option-icon with "loans.png" (width: 32px, height: 32px, alt: "Loans icon").
+- [x] Revert index.html CSS font sizes to original values (e.g., .greeting h1: 22px → 28px, .account-balance: 24px → 32px, etc.)
+
+- [x] Update TODO.md to reflect revert.
+
+- [x] Preview the restored index.html to verify original state.

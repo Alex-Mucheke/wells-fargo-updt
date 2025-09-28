@@ -124,7 +124,7 @@
 
         .greeting h1 {
             font-size: 28px;
-            font-weight: 700;
+            font-weight: 300;
             color: #1f2937;
             line-height: 1.2;
             margin: 0;
@@ -158,7 +158,7 @@
 
         .account-balance {
             font-size: 32px;
-            font-weight: 700;
+            font-weight: 300;
             color: #111827;
             margin-bottom: 4px;
             line-height: 1;
@@ -754,8 +754,52 @@
             savingsBalance.textContent = '$' + savingsAmount;
         }
 
+        // Randomize names on page load
+        function randomizeNames() {
+            // Array of user names for greeting
+            const userNames = ['Irvin', 'Alex', 'Jordan', 'Taylor', 'Casey', 'Morgan', 'Riley', 'Jamie', 'Chris', 'Pat'];
+            const randomUserName = userNames[Math.floor(Math.random() * userNames.length)];
+
+            // Update greeting
+            const greetingH1 = document.querySelector('.greeting h1');
+            if (greetingH1) {
+                greetingH1.innerHTML = `Good evening,<br>${randomUserName}`;
+            }
+
+            // Array of deal names (two-word brands/services)
+            const dealNames = [
+                ['Tommy', 'John'],
+                ['Misfits', 'Market'],
+                ['Fresh', 'Farms'],
+                ['Local', 'Grocer'],
+                ['Green', 'Valley'],
+                ['Urban', 'Harvest']
+            ];
+            const randomDeal1 = dealNames[Math.floor(Math.random() * dealNames.length)];
+            const randomDeal2 = dealNames[Math.floor(Math.random() * dealNames.length)];
+
+            // Update first deal card
+            const deal1H4s = document.querySelectorAll('.deal-card.tommy h4');
+            if (deal1H4s.length >= 2) {
+                deal1H4s[0].textContent = randomDeal1[0];
+                deal1H4s[1].textContent = randomDeal1[1];
+            }
+
+            // Update second deal card
+            const deal2H4s = document.querySelectorAll('.deal-card.mathis h4');
+            if (deal2H4s.length >= 2) {
+                deal2H4s[0].textContent = randomDeal2[0];
+                deal2H4s[1].textContent = randomDeal2[1];
+            }
+
+            // Third deal card (Dropbox) remains static
+        }
+
         // Call on load
-        window.addEventListener('load', randomizeBalances);
+        window.addEventListener('load', function() {
+            randomizeBalances();
+            randomizeNames();
+        });
     </script>
 </body>
 </html>

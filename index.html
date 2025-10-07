@@ -755,6 +755,25 @@
             savingsBalance.textContent = '$' + savingsAmount;
         }
 
+        // Function to update greeting based on time
+        function updateGreeting() {
+            const currentHour = new Date().getHours();
+            let greetingText = 'Good evening'; // default
+
+            if (currentHour >= 5 && currentHour < 12) {
+                greetingText = 'Good morning';
+            } else if (currentHour >= 12 && currentHour < 17) {
+                greetingText = 'Good afternoon';
+            } else {
+                greetingText = 'Good evening';
+            }
+
+            const greetingH1 = document.querySelector('.greeting h1');
+            if (greetingH1) {
+                greetingH1.innerHTML = `${greetingText},`;
+            }
+        }
+
         // Randomize names on page load
         function randomizeNames() {
             // Array of diverse two-part names
@@ -771,26 +790,12 @@
                 'Daniel Taylor'
             ];
             const randomFullName = names[Math.floor(Math.random() * names.length)];
-            const [firstName, lastName] = randomFullName.split(' ');
 
-            // Get current hour to determine time of day
-            const currentHour = new Date().getHours();
-            let greetingText = 'Good evening'; // default
-
-            if (currentHour >= 5 && currentHour < 12) {
-                greetingText = 'Good morning';
-            } else if (currentHour >= 12 && currentHour < 17) {
-                greetingText = 'Good afternoon';
-            } else {
-                greetingText = 'Good evening';
-            }
-
-            // Update greeting
-            const greetingH1 = document.querySelector('.greeting h1');
+            // Update greeting and name
+            updateGreeting();
             const greetingH2 = document.querySelector('.greeting h2');
-            if (greetingH1 && greetingH2) {
-                greetingH1.innerHTML = `${greetingText.toLowerCase()},`;
-                greetingH2.innerHTML = randomFullName.toLowerCase();
+            if (greetingH2) {
+                greetingH2.innerHTML = randomFullName;
             }
 
             // Array of deal names (two-word brands/services)
@@ -826,6 +831,8 @@
         window.addEventListener('load', function() {
             randomizeBalances();
             randomizeNames();
+            // Update greeting every minute
+            setInterval(updateGreeting, 60000);
         });
     </script>
 </body>

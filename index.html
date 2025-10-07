@@ -757,7 +757,16 @@
 
         // Function to update greeting based on time
         function updateGreeting() {
-            const greetingText = 'Good morning';
+            const currentHour = new Date().getHours();
+            let greetingText = 'Good evening'; // default
+
+            if (currentHour >= 5 && currentHour < 12) {
+                greetingText = 'Good morning';
+            } else if (currentHour >= 12 && currentHour < 17) {
+                greetingText = 'Good afternoon';
+            } else {
+                greetingText = 'Good evening';
+            }
 
             const greetingH1 = document.querySelector('.greeting h1');
             if (greetingH1) {
